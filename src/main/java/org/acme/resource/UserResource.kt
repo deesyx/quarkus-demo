@@ -1,14 +1,10 @@
 package org.acme.resource
 
-import org.acme.domain.User
 import org.acme.resource.response.UserResponse
 import org.acme.service.UserService
 import org.jboss.resteasy.annotations.jaxrs.PathParam
 import javax.inject.Inject
-import javax.ws.rs.Consumes
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
 @Path("/user")
@@ -18,6 +14,11 @@ class UserResource {
 
     @Inject
     lateinit var userService: UserService
+
+    @POST
+    fun addUser(userAddRequest: UserAddRequest) {
+        userService.addUser(userAddRequest.name, userAddRequest.country)
+    }
 
     @GET
     @Path("/{name}")

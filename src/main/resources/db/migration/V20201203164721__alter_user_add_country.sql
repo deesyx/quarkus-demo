@@ -1,0 +1,3 @@
+ALTER TABLE "user" ADD COLUMN country VARCHAR(30);
+ALTER TABLE "user" ADD COLUMN country_code VARCHAR(10);
+ALTER TABLE "user" ADD COLUMN country_capital VARCHAR(30);
