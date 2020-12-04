@@ -16,5 +16,5 @@ interface CountryClient {
     @Path("/name/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    fun getByName(@PathParam name: String): List<Country>
+    fun getByName(@PathParam("name") name: String): List<Country>
 }
