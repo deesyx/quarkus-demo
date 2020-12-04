@@ -12,6 +12,7 @@ import org.acme.repository.UserEntityRepository
 import org.eclipse.microprofile.rest.client.inject.RestClient
 import javax.enterprise.context.ApplicationScoped
 import javax.inject.Inject
+import javax.transaction.Transactional
 
 @ApplicationScoped
 class UserService {
@@ -23,7 +24,7 @@ class UserService {
     @RestClient
     lateinit var countryClient: CountryClient
 
-    fun addUser(name: String, countryName: String) {
+    fun addUser(name: String, countryName: String): User {
         val countries: List<Country>
         try {
             countries = countryClient.getByName(countryName)
@@ -42,7 +43,8 @@ class UserService {
         user.country = country.name
         user.name = name
 
-        userEntityRepository.persist(UserEntity.fromDomain(user))
+        userEntityRepository.save(UserEntity.fromDomain(user))
+        return user
     }
 
     fun getUser(name: String): User {

@@ -8,7 +8,7 @@ import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
-@Path("/v2")
+@Path("/rest/v2")
 @RegisterRestClient(configKey = "country-api")
 interface CountryClient {
 

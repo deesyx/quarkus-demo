@@ -16,8 +16,9 @@ class UserResource {
     lateinit var userService: UserService
 
     @POST
-    fun addUser(userAddRequest: UserAddRequest) {
-        userService.addUser(userAddRequest.name, userAddRequest.country)
+    fun addUser(userAddRequest: UserAddRequest): UserResponse {
+        val user = userService.addUser(userAddRequest.name, userAddRequest.country)
+        return user.toResponse()
     }
 
     @GET

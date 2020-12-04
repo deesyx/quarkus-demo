@@ -7,7 +7,7 @@ import javax.persistence.*
 @Table(name = "user", schema = "public")
 class UserEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="user_id_seq")
     var id: Long? = null
 
     var name: String? = null

@@ -2,7 +2,7 @@ package org.acme.domain
 
 import org.acme.resource.response.UserResponse
 
-class User() {
+class User {
 
     var id: Long? = null
     var name: String? = null
@@ -11,6 +11,6 @@ class User() {
     var countryCapital: String? = null
 
     fun toResponse(): UserResponse {
-        return UserResponse(this.id, this.name)
+        return UserResponse(this.id, this.name, this.country, this.countryCode, this.countryCapital)
     }
 }
