@@ -15,9 +15,10 @@ class UserResource {
     @Inject
     lateinit var userService: UserService
 
-    @POST
-    fun addUser(userAddRequest: UserAddRequest): UserResponse {
-        val user = userService.addUser(userAddRequest.name, userAddRequest.country)
+    @GET
+    @Path("/add/{name}")
+    fun addUser(@PathParam("name") name: String): UserResponse {
+        val user = userService.addUser(name)
         return user.toResponse()
     }
 

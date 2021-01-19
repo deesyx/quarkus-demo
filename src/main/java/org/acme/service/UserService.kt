@@ -24,23 +24,11 @@ class UserService {
     @RestClient
     lateinit var countryClient: CountryClient
 
-    fun addUser(name: String, countryName: String): User {
-        val countries: List<Country>
-        try {
-            countries = countryClient.getByName(countryName)
-        } catch (e: Exception) {
-            throw ServerException(ErrorCode.GET_COUNTRY_FAILED)
-        }
-
-        if (countries.isEmpty()) {
-            throw BadRequestException(ErrorCode.COUNTRY_NOT_VALID)
-        }
-
-        val country = countries[0]
+    fun addUser(name: String): User {
         val user = User()
-        user.countryCapital = country.capital
-        user.countryCode = country.alpha2Code
-        user.country = country.name
+        user.countryCapital = "test"
+        user.countryCode = "test"
+        user.country = "test"
         user.name = name
 
         userEntityRepository.save(UserEntity.fromDomain(user))
