@@ -1,6 +1,5 @@
 package org.acme.resource
 
-import org.acme.aspect.Logged
 import org.acme.service.TestService
 import javax.inject.Inject
 import javax.ws.rs.Consumes
