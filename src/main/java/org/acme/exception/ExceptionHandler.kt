@@ -9,6 +9,7 @@ import javax.ws.rs.ext.Provider
 class ExceptionHandler : ExceptionMapper<Exception> {
 
     override fun toResponse(e: Exception): Response {
+        println(e)
         return if (e is BasicException) {
             Response.status(e.httpStatus).entity(ErrorResponse.build(e)).build()
         } else {

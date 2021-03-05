@@ -1,5 +1,8 @@
 package org.acme.exception
 
+import io.quarkus.runtime.annotations.RegisterForReflection
+
+@RegisterForReflection
 class ErrorResponse(
         var code: String?,
         var message: String?,

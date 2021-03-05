@@ -22,6 +22,8 @@ dependencies {
     implementation 'io.quarkus:quarkus-hibernate-orm-panache-kotlin'
     implementation 'io.quarkus:quarkus-rest-client'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "io.quarkiverse.hibernatetypes:quarkus-hibernate-types:0.1.0"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 }
 
 group 'org.acme'
