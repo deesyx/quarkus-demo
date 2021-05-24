@@ -18,6 +18,7 @@ class TestResource {
 
     @GET
     fun test(): Any? {
+        println("testService in testResource:$testService")
         return testService.test()
     }
 }
