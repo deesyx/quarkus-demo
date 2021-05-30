@@ -12,9 +12,9 @@ class LoggingInterceptor {
 
     @AroundInvoke
     fun logInvocation(context: InvocationContext): Any? {
-        println("start")
+        println("start-method: ${context.method.name}")
         val ret = context.proceed()
-        println("end")
+        println("end-result: $ret")
         return ret
     }
 }
