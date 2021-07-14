@@ -26,4 +26,10 @@ class UserResource {
     fun getUser(@PathParam("name") name: String): UserResponse {
         return userService.getUser(name).toResponse()
     }
+
+    @PUT
+    @Path("/{name}")
+    fun updateUser(@PathParam("name") name: String): UserResponse{
+        return userService.updateUser(name).toResponse()
+    }
 }

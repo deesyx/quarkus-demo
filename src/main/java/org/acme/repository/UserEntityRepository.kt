@@ -16,4 +16,9 @@ class UserEntityRepository : PanacheRepository<UserEntity> {
     fun save(userEntity: UserEntity) {
         return this.persist(userEntity)
     }
+
+    @Transactional
+    fun update(userEntity: UserEntity) {
+        update("set info = ?1 where name = ?2", userEntity.info!!, userEntity.name!!)
+    }
 }

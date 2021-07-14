@@ -1,5 +1,6 @@
 package org.acme.service
 
+import io.vertx.core.eventbus.EventBus
 import org.acme.domain.Info
 import org.acme.domain.User
 import org.acme.entity.UserEntity
@@ -26,6 +27,9 @@ class UserService {
     @RestClient
     lateinit var countryClient: CountryClient
 
+    @Inject
+    lateinit var eventBus: EventBus
+
     fun addUser(userAddRequest: UserAddRequest): User {
 
         val country = countryClient.getByName(userAddRequest.country!!)[0]
@@ -45,6 +49,27 @@ class UserService {
         val userEntity: UserEntity = userEntityRepository.findByName(name)
                 ?: throw NotFoundException(ErrorCode.USER_NOT_FOUND)
         return userEntity.toDomain()
+    }
+
+    fun updateUser(name: String): User {
+        val userEntity = userEntityRepository.findByName(name)
+                ?: throw NotFoundException(ErrorCode.USER_NOT_FOUND)
+        userEntity.info!!.a = userEntity.info!!.a + "1"
+        val newUserEntity = UserEntity().apply {
+            this.id = userEntity.id
+            this.countryCapital = userEntity.countryCapital
+            this.country = userEntity.country
+            this.countryCode = userEntity.countryCode
+            this.name = userEntity.name
+            this.info = userEntity.info
+        }
+        userEntityRepository.update(newUserEntity)
+        val userEntity1 = (userEntityRepository.findByName(name)
+                ?: throw NotFoundException(ErrorCode.USER_NOT_FOUND))
+        eventBus.publish("user update", userEntity1.name)
+        eventBus.publish("user update", userEntity1.name)
+        eventBus.publish("user update", userEntity1.name)
+        return userEntity1.toDomain()
     }
 
 }
