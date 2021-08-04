@@ -79,11 +79,11 @@ class UserService {
 
         println("0: " + Thread.currentThread().name)
         val supplyAsync = CompletableFuture.supplyAsync({ onUserUpdate(userEntity1.name!!) }, managedExecutor::execute)
-        supplyAsync.join()
+//        supplyAsync.join()
 
-        if (userEntity1.name == "a") {
-            throw IllegalArgumentException("test")
-        }
+//        if (userEntity1.name == "a") {
+//            throw IllegalArgumentException("test")
+//        }
 
         return userEntity1.toDomain()
     }
@@ -97,7 +97,9 @@ class UserService {
                 countryCapital = "test",
                 info = Info(a = "haha", b = LocalDateTime.now())
         )
+        Thread.sleep(10000L)
         userEntityRepository.save(UserEntity.fromDomain(user))
+        println("sub thread finish")
 //        if (user.name == "test") {
 //            throw IllegalArgumentException("test")
 //        }
