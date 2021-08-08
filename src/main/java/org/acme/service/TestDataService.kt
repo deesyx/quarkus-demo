@@ -4,6 +4,7 @@ import org.acme.domain.TestData
 import org.acme.entity.TestDataEntity
 import org.acme.repository.TestDataEntityRepository
 import org.eclipse.microprofile.context.ManagedExecutor
+import org.eclipse.microprofile.context.ThreadContext
 import java.lang.IllegalArgumentException
 import java.util.concurrent.CompletableFuture
 import javax.inject.Inject
@@ -22,6 +23,9 @@ class TestDataService {
 
     @Inject
     lateinit var transaction: UserTransaction
+
+    @Inject
+    lateinit var threadContext: ThreadContext
 
     @Transactional
     fun test() {
