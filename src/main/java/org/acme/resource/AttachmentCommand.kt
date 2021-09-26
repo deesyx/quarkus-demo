@@ -17,4 +17,8 @@ data class AttachmentCommand(
         Files.copy(inputStream, tempFile, StandardCopyOption.REPLACE_EXISTING)
         return tempFile
     }
+
+    fun attachmentBody2(): InputStream {
+        return this.file?.getBody(InputStream::class.java, null)!!
+    }
 }

@@ -27,8 +27,9 @@ dependencies {
     implementation "io.quarkiverse.hibernatetypes:quarkus-hibernate-types:0.1.0"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     implementation "io.airlift:concurrent:208"
-    implementation "org.apache.poi:poi-ooxml:4.1.2"
+//    implementation "org.apache.poi:poi-ooxml:4.1.2"
     implementation "org.jboss.resteasy:resteasy-multipart-provider"
+    implementation "net.sourceforge.jexcelapi:jxl:2.6.12"
 }
 
 group 'org.acme'
