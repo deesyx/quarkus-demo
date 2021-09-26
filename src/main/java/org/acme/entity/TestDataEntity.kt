@@ -12,6 +12,7 @@ class TestDataEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "test_data_id_seq")
     var id: Long? = null
 
+    @JoinColumn
     var key: String? = null
 
     @Column(name = "updated_count")
