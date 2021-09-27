@@ -1,50 +1,13 @@
-# quarkus-demo project
+### POI failed in native
+https://github.com/quarkusio/quarkus/issues/10891
+https://github.com/oracle/graal/issues/2187
+https://github.com/oracle/graal/issues/3191
+https://stackoverflow.com/questions/59178299/using-apache-poi-with-graalvm-native-image-classcastexception-from-xmlbeans
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+### How to use native image agent
+https://stackoverflow.com/questions/64450394/how-to-use-the-graalvm-native-image-agent-with-quarkus
+https://stackoverflow.com/questions/67046821/how-do-i-run-the-graalvm-native-image-tracing-agent-from-a-spring-native-gradle
+https://www.graalvm.org/reference-manual/native-image/Agent/
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-```shell script
-./gradlew quarkusDev
-```
-
-## Packaging and running the application
-
-The application can be packaged using:
-```shell script
-./gradlew build
-```
-It produces the `quarkus-demo-1.0.0-SNAPSHOT-runner.jar` file in the `/build` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `build/lib` directory.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./gradlew build -Dquarkus.package.type=uber-jar
-```
-
-The application is now runnable using `java -jar build/quarkus-demo-1.0.0-SNAPSHOT-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./gradlew build -Dquarkus.package.type=native
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./build/quarkus-demo-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
-
-# RESTEasy JAX-RS
-
-<p>A Hello World RESTEasy resource</p>
-
-Guide: https://quarkus.io/guides/rest-json
+### Native image agent not found
+https://github.com/oracle/graal/issues/1057
